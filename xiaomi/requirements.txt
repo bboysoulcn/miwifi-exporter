@@ -1,0 +1,4 @@
+prometheus-client==0.8.0
+pycrypto==2.6.1
+requests==2.24.0
+

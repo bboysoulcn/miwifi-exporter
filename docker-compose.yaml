@@ -1,0 +1,17 @@
+version: "3"
+services:
+  miwifi-exporter:
+    image: "bboysoul/miwifi-exporter:v1.0.0"
+    container_name: "miwifi-exporter"
+    restart: "always"
+    volumes:
+      - "/etc/localtime:/etc/localtime"
+    ports:
+      - "8211:8211"
+    environment:
+      - "PASSWORD="
+      - "ROUTE_IP=10.10.100.1"
+      - "SLEEP_TIME=10"
+      - "EXPORTER_PORT=8211"
+      - "MAX_RETRIES=3"
+      - "TIMEOUT=10"
