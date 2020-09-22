@@ -1,3 +1,4 @@
+#!/bin/sh
 echo "[config]" > config.ini
 
 if [ -n "$PASSWORD" ]; then
@@ -38,3 +39,5 @@ if [ -n "$TIMEOUT" ]; then
 else
     echo "TIMEOUT=10" >> config.ini
 fi
+
+python3 main.py

@@ -96,6 +96,8 @@ def get_route_status(token):
 if __name__ == '__main__':
     prometheus_client.start_http_server(exporter_port)
     miwifi_prom = Gauge("MIWIFI", "miwifi status", ["miwifi_status"])
+    print("server start at " + str(exporter_port))
+    print("blog: www.bboy.app")
 
     while True:
         try:
