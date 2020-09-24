@@ -44,7 +44,6 @@ jobs:
         uses: chf007/action-wechat-work@master
         env:
           WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
-          MSG: miwifi-exporter 编译完成
         with:
           msgtype: markdown
-          content: $MSG
+          content: miwifi-exporter 编译完成
