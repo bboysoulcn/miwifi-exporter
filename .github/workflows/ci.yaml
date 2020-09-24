@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-job:
+jobs:
   build-and-deploy-image:
     runs-on: ubuntu-latest
     steps:
