@@ -10,7 +10,7 @@ jobs:
       # 拉取master分支
       - name: Checkout
         uses: actions/checkout@master
-      #设置qemu来编译多个平台的镜像
+      # 设置qemu来编译多个平台的镜像
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       # 设置buildx
