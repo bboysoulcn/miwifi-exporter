@@ -2,12 +2,12 @@ name: ci
 on:
   push:
     branches:
-      - master
+      - develop
 jobs:
   build-and-deploy-image:
     runs-on: ubuntu-latest
     steps:
-      # 拉取master分支
+      # 拉取develop分支
       - name: Checkout
         uses: actions/checkout@master
       # 设置qemu来编译多个平台的镜像
@@ -39,8 +39,8 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           tags: |
-            bboysoul/miwifi-exporter:latest
-            bboysoul/miwifi-exporter:v1.0.0
+            bboysoul/miwifi-exporter:latest-dev
+            bboysoul/miwifi-exporter:v1.0.1-dev
       # 微信提醒
       - name: WeChat Work notification by markdown
         uses: chf007/action-wechat-work@master

@@ -8,6 +8,10 @@ from prometheus_client import Gauge
 import prometheus_client
 from requests.adapters import HTTPAdapter
 import configparser
+import logging
+
+# 日志
+logging.basicConfig(level=logging.INFO)
 
 # 读取配置
 config = configparser.ConfigParser()
@@ -59,8 +63,10 @@ def get_token():
     res = json.loads(response.content)
     if res['code'] == 0:
         token = res['token']
+        logging.debug(token)
         return token
     else:
+        logging.info("token 获取失败")
         return False
 
 
@@ -90,14 +96,15 @@ def get_route_status(token):
         "wan_maxuploadspeed": wan_maxuploadspeed,
         "count": count
     }
+    logging.debug(status)
     return status
 
 
 if __name__ == '__main__':
     prometheus_client.start_http_server(exporter_port)
     miwifi_prom = Gauge("MIWIFI", "miwifi status", ["miwifi_status"])
-    print("server start at " + str(exporter_port))
-    print("blog: www.bboy.app")
+    logging.info("server start at " + str(exporter_port))
+    logging.info("blog: www.bboy.app")
 
     while True:
         try:
@@ -125,5 +132,5 @@ if __name__ == '__main__':
             miwifi_prom.labels("wan_download").set(wan_download)
             miwifi_prom.labels("count").set(count)
         except Exception as e:
-            print(e)
+            logging.error(e)
         time.sleep(sleep_time)
